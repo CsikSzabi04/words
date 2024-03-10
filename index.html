@@ -147,12 +147,13 @@
         #billentyűzet {
             display: block;
             margin: 0 auto;
-            background: rgb(247, 247, 247);
-            background: radial-gradient(circle, rgba(247, 247, 247, 1) 0%, rgba(196, 196, 196, 1) 100%);
+            /*background: rgb(247, 247, 247);
+            background: radial-gradient(circle, rgba(247, 247, 247, 1) 0%, rgba(196, 196, 196, 0.877) 100%);*/
             padding-bottom: 10px;
             width: 95%;
             border-radius: 20px;
             margin-bottom: 10px;
+            box-shadow: 10px 7px 2px rgba(135, 147, 151, 0.302);
         }
 
         #monitor {
@@ -240,7 +241,7 @@
 </head>
 
 <body
-    class="bg-gradient-to-r from-blue-400 to-blue-200 dark:to-cyan-900 dark:from-blue-950  flex justify-center items-center relative">
+    class="bg-gradient-to-r from-teal-200 to-pink-200 dark:from-blue-950 dark:to-cyan-950 flex justify-center items-center relative">
     <div class="main">
         <div id="monitor">
             <div id="toppadd">
@@ -251,7 +252,7 @@
             </div>
         </div>
         <div class="desk">
-            <div id="billentyűzet">
+            <div id="billentyűzet" class="bg-gradient-to-r from-gray-300 via-white to-gray-300 dark:from-cyan-200/50 dark:via-cyan-300/50 dark:to-cyan-200/50 dark:shadow-[10px_7px_2px_rgba(135,147,151,0.129)]">
                 <div id="abc" class="flex flex-wrap gap-2 justify-center mt-3 p-2 rounded-md max-w-screen-lg"></div>
                 <div id="start"><!--<button class="start" onclick="start();"  >Start</button>--></div>
                 <!--<div class="p-5 bg-white dark:bg-slate-400"></div> -->
