@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="theme.js"></script>
+    <title>Word guesser</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgb(249 250 251);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            width: 100%;
+            height: auto;
+         
+        }
+
+        .main {
+            display: inline-block;
+            border-radius: 10px;
+            height: 963px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            padding-top: 55px;
+            font-size: 100px;
+            /*color: rgb(6, 177, 208);*/
+            color: black;
+        }
+
+        #abc {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #start {
+            margin-top: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bolder;
+            width: 100%;
+        }
+
+        #start button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: x-large;
+            font-weight: bolder;
+            border: 2px solid rgba(203, 203, 203, 0.722);
+            background-color: lightgray;
+            padding: 20px 50px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            width: 400px;
+            height: 65px;
+            background-color: rgba(244, 244, 244, 0.922);
+            text-shadow: 1px 1px 1px rgb(166, 166, 166);
+            cursor: pointer;
+        }
+
+        #start button:hover {
+            color: cyan;
+            background-color: lightgray;
+            transform: scale(0.8);
+            transition-duration: 0.3s;
+            box-shadow: 10px 7px 2px rgb(0, 255, 255);
+        }
+
+        .word {
+            display: flex;
+            margin: 2px;
+            justify-content: center;
+            align-items: center;
+            padding-right: 20px;
+            padding-left: 20px;
+            font-size: 40px;
+            text-align: center;
+            border-bottom: 2px solid rgb(6, 177, 208);
+            max-width: 30px;
+            width: 100%;
+            color: white;
+            font-weight: bolder;
+        }
+
+        .font {
+            background-color: rgba(244, 244, 244, 0.922);
+            color: rgba(96, 165, 250, 0.502);
+            text-shadow: 1px 1px 1px rgb(166, 166, 166);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 30px;
+            padding-left: 30px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin: 3px;
+            font-size: large;
+            font-weight: bolder;
+            text-align: center;
+            border: 2px solid rgba(203, 203, 203, 0.625);
+            border-radius: 10px;
+            max-width: 30px;
+            cursor: pointer;
+            box-shadow: 10px 7px 2px rgba(27, 137, 255, 0.212);
+            width: 100%;
+        }
+
+        .font:hover {
+            color: #00ffff;
+            background-color: lightgray;
+            transform: scale(0.8);
+            transition-duration: 0.2s;
+            box-shadow: 10px 7px 2px cyan;
+        }
+
+        #title {
+            margin-top: 0px;
+            margin-bottom: 20px;
+            height: 50px;
+            font-size: 40px;
+        }
+
+        #title p {
+            text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        #billentyűzet {
+            display: block;
+            margin: 0 auto;
+            background: rgb(247, 247, 247);
+            background: radial-gradient(circle, rgba(247, 247, 247, 1) 0%, rgba(196, 196, 196, 1) 100%);
+            padding-bottom: 10px;
+            width: 95%;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        #monitor {
+            display: flexbox;
+            background-image: url("monitor.png");
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 495px;
+            background-position: center;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+
+        #monitor img {
+            display: flexbox;
+            width: 2000px;
+            height: 3000px;
+            margin: 0 auto;
+        }
+
+        #toppadd {
+            padding-top: 30px;
+        }
+
+        .abcoszt:hover {
+            color: black;
+        }
+
+        @media only screen and (max-width: 765px) {
+            .main{
+                margin-top: 20%;
+            }
+            #monitor img{
+                width: 30%;
+                height: 30%;
+                display: inline;
+            }
+            #billenytűzet {
+                width: 90% !important;
+                height: 20%;
+                display: inline;
+            }
+            .font{
+                font-size: small;
+                padding: 15px;
+                margin: 0px;
+                width: 50px;
+                height: 30px;
+                box-shadow: 5px 5px 2px rgba(27, 137, 255, 0.212);
+            }
+            #start button{
+                height: 30px;
+                width: 300px;
+                padding: 5px;
+                margin: 0px;
+                font-size: small;
+            }
+            #start{
+                margin-top: 4px;
+            }
+            #monitor{
+                width: 60%;
+                height: 20%;
+                margin-bottom: 20px;
+                display: inline;
+            }
+            #title{
+                font-size: large;
+                height: 100%;
+            }
+            #container{
+                font-size: small;
+                padding: 0px;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .word{
+                font-size: small;
+                padding: 0px;
+                width: 10%;
+                max-width: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-r from-blue-400 to-blue-200 dark:to-cyan-900 dark:from-blue-950  flex justify-center items-center relative">
+    <div class="main">
+        <div id="monitor">
+            <div id="toppadd">
+                <div id="title">
+                    <p>Találd ki a szót</p>
+                </div>
+                <div id="container"></div>
+            </div>
+        </div>
+        <div class="desk">
+            <div id="billentyűzet">
+                <div id="abc" class="flex flex-wrap gap-2 justify-center mt-3 p-2 rounded-md max-w-screen-lg"></div>
+                <div id="start"><!--<button class="start" onclick="start();"  >Start</button>--></div>
+                <!--<div class="p-5 bg-white dark:bg-slate-400"></div> -->
+            </div>
+        </div>
+    </div>
+    <button class="absolute right-0 top-0" onclick="toggleTheme()">
+        <span class="bgs hidden text-cyan-200" id="dark-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill=" none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+            </svg>
+        </span>
+        <span class="text-blue-700" id="light-icon" class="bgs">
+            <svg xmlns="http://www.w3.org/2000/svg" fill=" none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+            </svg>
+        </span>
+    </button>
+    <script src="words.js"></script>
+    <script>
+        //console.log(words.length);
+        document.getElementById('start').innerHTML = "<div id='start'><button class='hover:text-[#1596ff70] drop-shadow-[1px_1px_1px_rgba(166,166,166)] shadow-[10px_7px_2px_rgba(27,137,255,0.212)] text-blue-400/50 dark:text-[#00ffff] dark:hover:text-cyan-400 dark:shadow-[10px_7px_2px_rgb(0,255,255,1)]' onclick='start();'  >Start</button></div>";
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            document.getElementById('light-icon').classList.toggle('hidden');
+            document.getElementById('dark-icon').classList.toggle('hidden');
+            //document.getElementById('start').innerHTML = "<div id='start'><button class='text-purple-400 dark:text-cyan-400' onclick='start();'  >Start</button></div>";
+            //let dark = document.getElementById('dark-icon').classList.toggle('hidden');
+            //document.getElementById('monitor').style.backgroundImage="url(monitor2.png)";
+        }
+
+        let randNr = Math.floor(Math.random() * 35) + 1;
+        //console.log(randNr);
+
+        let randWord = words[randNr]
+        let randArrWord = Array.from(randWord)
+        //console.log(randWord);
+
+        let fonts = Array.from(abc);
+
+        function start() {
+            document.getElementById('container').innerHTML = "";
+            randNr = Math.floor(Math.random() * 35) + 1;
+            randWord = words[randNr]
+            randArrWord = Array.from(randWord)
+
+            randArrWord.forEach((element, index) => {
+                document.getElementById('container').innerHTML += `<div class="word border-b-cyan-500 dark:border-b-cyan-500">${randArrWord[index]}</div>`;
+            });
+
+            for (let a = 0; a < 3; a++) {
+                let random = Math.floor(Math.random() * randArrWord.length);
+                let hiddenFonts = abc[random];
+                document.getElementById('container').children[random].innerHTML = "";
+            };
+
+            let tipp = []
+            let full = document.getElementById("container").innerText;
+            //console.log(randWord);
+            //location.reload();
+            //katt();
+        }
+
+        randArrWord.forEach((element, index) => {
+            document.getElementById('container').innerHTML += `<div class="word border-b-cyan-500 dark:border-b-cyan-500">${randArrWord[index]}</div>`;
+        });
+
+        fonts.forEach((element, index) => {
+            document.getElementById('abc').innerHTML += `<button class="font drop-shadow-[1px_1px_1px_rgba(166,166,166)] dark:text-[#00ffff] dark: dark:shadow-[10px_7px_2px_rgba(0,255,255,0.8)]" onclick="katt(this.innerText)">${fonts[index]}</button>`;
+        });
+
+
+        for (let a = 0; a < 3; a++) {
+            let random = Math.floor(Math.random() * randArrWord.length);
+            let hiddenFonts = abc[random];
+            document.getElementById('container').children[random].innerHTML = "";
+        };
+
+        let tipp = []
+        let full = document.getElementById("container").innerText;
+        //console.log(full);
+
+        function katt(letter) {
+            //console.log(letter);
+            tipp.push(letter);
+            for (let i = 0; i < randArrWord.length; i++) {
+                if (randArrWord[i] == letter) {
+                    document.getElementById('container').children[i].innerHTML = letter;
+                }
+            }
+            let wordCompleted = true;
+            for (let i = 0; i < randArrWord.length; i++) {
+                if (randArrWord[i] == letter) {
+                    document.getElementById('container').children[i].innerHTML = letter;
+                }
+                if (document.getElementById('container').children[i].innerHTML != randArrWord[i]) {
+                    wordCompleted = false;
+                }
+            }
+            if (wordCompleted) {
+                setTimeout(function () {
+                    alert("Ügyes vagy!");
+                    start();
+                }, 500);
+            }
+        };
+        /*
+                console.log(random);
+                console.log(hiddenFonts);
+                console.log(document.getElementById('container').children);
+                console.log( document.getElementById('container').children[random])
+                let randomWord
+        
+                function handleKeyUp(){
+                    genRandNr()
+                    displayWord()
+                    displayAbc()
+                }
+        */
+    </script>
+</body>
+
+</html>
